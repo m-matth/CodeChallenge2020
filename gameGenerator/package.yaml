@@ -22,6 +22,19 @@ description:         Please see the README on GitHub at <https://github.com/gith
 dependencies:
 - base >= 4.7 && < 5
 - random
+- mtl
+- array
+- vector
+- tensorflow-proto
+- tensorflow
+- tensorflow-ops
+- tensorflow-core-ops
+- tensorflow-opgen
+- data-default
+- bytestring
+- temporary
+- lens
+- text
 
 library:
   source-dirs: src

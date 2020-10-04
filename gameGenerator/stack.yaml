@@ -17,8 +17,8 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver: lts-16.16
-
+# resolver: lts-16.16
+resolver: nightly-2018-11-11
 # User packages to be built.
 # Various formats can be used as shown in the example below.
 #
@@ -40,6 +40,16 @@ packages:
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
 # extra-deps: []
+
+extra-deps:
+  - tensorflow-proto-0.2.0.1
+  - tensorflow-core-ops-0.2.0.1
+  - tensorflow-ops-0.2.0.1
+  - tensorflow-opgen-0.2.0.1
+  - tensorflow-0.2.0.1
+  - fgl-5.7.0.3@sha256:a5970bb2d6835e2479380ca822ac43436ffef050770391f21802ed4610e1d5b8,3648
+  - mainland-pretty-0.7.0.1@sha256:4ad089aaa0c8606852160a11afbf252daaadbf35ea1020379799c8ecc1a43333,1601
+  - srcloc-0.5.1.2@sha256:0783b40fd57211c95fbeccbe98df9d54d0926e544e0540bf2e10b1a1dca800c4,878
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
@@ -64,3 +74,5 @@ packages:
 #
 # Allow a newer minor version of GHC than the snapshot specifies
 # compiler-check: newer-minor
+
+allow-newer: false

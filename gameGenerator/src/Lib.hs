@@ -1,15 +1,14 @@
 {-# LANGUAGE FlexibleInstances, UndecidableInstances #-}
 {-# LANGUAGE LambdaCase #-}
 
-module Lib
-    ( someFunc
-    ) where
+module Lib where
 
 import System.Random
 import Data.List as List
 import Control.Monad (replicateM, forever)
 import Control.Concurrent (threadDelay)
 import Debug.Trace
+
 
 type Width = Int
 type Height = Int
@@ -50,7 +49,10 @@ data Action = MoveUp
             | FireLeft
             | FireRight
             | NoOp
-  deriving ( Eq, Show)
+  deriving ( Eq, Enum, Show)
+
+
+nbOfAction = 9
 
 instance Show Cell where
   show Unknow =  "?"
@@ -108,6 +110,11 @@ generateInitialBoard width height = do
     untilValid x = return x
     untilValid' = untilValid =<< randomCell
 
+
+fromBoard :: Board -> [Char]
+fromBoard (Board x) =
+  map (\c -> head $ show c) $ concat x
+
 randomCell :: IO Cell
 randomCell = randomIO
 
@@ -154,8 +161,10 @@ nextRound :: Board -> IO Board
 nextRound b =
   return b
 
-boardX = 6
-boardY = 5
+boardX = 12
+boardY = 8
+
+
 
 someFunc :: IO ()
 someFunc = do
@@ -176,3 +185,4 @@ someFunc = do
   print $ foldr (\a b -> move b a) randomBoard actionWithCoord
 
   -- print $ applyAction randomBoard actions
+
